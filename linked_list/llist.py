@@ -142,21 +142,3 @@ class LList:
             print_reverse_helper(node.next)
             print(node.data)
         print_reverse_helper(self.head)
-            
-    
-
-l = LList()
-l.append(1)
-l.append(2)
-l.append(3)
-l.append(4)
-l.append(5)
-l.prepend(10)
-l.print()
-print("\n")
-l.reverse()
-l.print()
-print()
-print(l.middle().data)
-print(l.get_length())
-
