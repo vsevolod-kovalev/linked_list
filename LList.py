@@ -2,9 +2,11 @@ class Node:
     def __init__(self, data=0):
         self.data = data
         self.next = None
+
 class LList:
     def __init__(self):
         self.head = None
+
     def append(self, data):
         newNode = Node(data)
         if self.head == None:
@@ -14,11 +16,13 @@ class LList:
         while (t_head.next != None):
             t_head = t_head.next
         t_head.next = newNode
+
     def prepend(self, data):
         newNode = Node(data)
         if (self.head != None):
             newNode.next = self.head
         self.head = newNode
+
     def insert_after_node(self, prev_node, data):
         if (prev_node == None):
             raise Exception("Cannot insert after None")
@@ -28,6 +32,7 @@ class LList:
             t_head = t_head.next
         newNode.next = prev_node.next
         prev_node.next = newNode
+
     def delete_node(self, key):
         if (key == None):
             raise ValueError("Cannot delete a node with None data")
@@ -90,6 +95,7 @@ class LList:
             
         if self.head is not None:
             reverseHelper(self.head).next = None
+
     def reverse(self):
         t_head = self.head
         next = None
@@ -109,16 +115,27 @@ class LList:
         while not (fast is None or fast.next is None):
             slow = slow.next
             fast = fast.next.next
-
         return slow
 
     def has_cycle(self):
-        pass
+        if self.head is None:
+            return False
+        slow = self.head
+        fast = self.head
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            if slow is fast:
+                return True
+        return False
+
     def print(self):
         t_head = self.head
         while (t_head != None):
             print(t_head.data)
             t_head = t_head.next
+
     def print_reverse(self):
         def print_reverse_helper(node):
             if (node is None):
